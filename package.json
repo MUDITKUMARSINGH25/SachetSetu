@@ -1,0 +1,9 @@
+{
+  "name": "sachetsetu-scam-safety",
+  "version": "1.0.0",
+  "private": false,
+  "type": "module",
+  "description": "Offline-first, multilingual scam-checking and incident-response guide for India.",
+  "scripts": { "test": "node --test" },
+  "license": "MIT"
+}

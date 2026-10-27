@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d2037">
+  <meta name="description" content="A private, offline-first scam-safety and incident-response guide for India.">
+  <title>SachetSetu — Scam Check & Recovery Guide</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="public/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Skip to content</a>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="SachetSetu home">
+      <span class="brand-mark" aria-hidden="true">S</span>
+      <span><strong>SachetSetu</strong><small data-i18n="brandSub">Scam Check & Recovery Guide</small></span>
+    </a>
+    <div class="top-actions">
+      <span class="privacy-pill"><span class="status-dot"></span><span data-i18n="private">Private by design</span></span>
+      <label class="sr-only" for="language" data-i18n="language">Choose language</label>
+      <select id="language" aria-label="Choose language">
+        <option value="en">English</option><option value="hi">हिन्दी</option><option value="pa">ਪੰਜਾਬੀ</option>
+      </select>
+    </div>
+  </header>
+
+  <main id="main" class="shell">
+    <section class="hero" id="top">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-dot"></span><span data-i18n="eyebrow">A safer digital India starts with one pause</span></p>
+        <h1 data-i18n="heroTitle">Stop. Check. Secure.</h1>
+        <p class="hero-lede" data-i18n="heroText">Check suspicious messages, understand the warning signs, and get clear next steps if something has already happened.</p>
+        <div class="hero-tags"><span data-i18n="tagOffline">Works without an AI API</span><span data-i18n="tagExplain">Explains every flag</span><span data-i18n="tagLocal">English · हिन्दी · ਪੰਜਾਬੀ</span></div>
+      </div>
+      <div class="hero-graphic" aria-label="Pause before taking action" role="img">
+        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+        <div class="shield"><span>✓</span></div><div class="orbit-label label-top">PAUSE</div><div class="orbit-label label-bottom">VERIFY</div>
+      </div>
+    </section>
+
+    <nav class="tabs" aria-label="Main sections">
+      <button class="tab active" data-tab="check" aria-selected="true"><span class="tab-icon">⌕</span><span data-i18n="tabCheck">Check a message</span></button>
+      <button class="tab" data-tab="incident" aria-selected="false"><span class="tab-icon">✚</span><span data-i18n="tabIncident">Something happened</span></button>
+      <button class="tab" data-tab="learn" aria-selected="false"><span class="tab-icon">◎</span><span data-i18n="tabLearn">Learn safely</span></button>
+    </nav>
+
+    <section class="panel active" id="panel-check" aria-labelledby="check-heading">
+      <div class="section-heading">
+        <div><p class="section-kicker" data-i18n="step01">STEP 01 / CHECK</p><h2 id="check-heading" data-i18n="checkTitle">What did the message say?</h2><p data-i18n="checkDesc">Paste the text, or load a safe example. The text stays in this browser tab.</p></div>
+        <span class="step-bubble">01</span>
+      </div>
+      <div class="work-grid">
+        <div class="input-card">
+          <label for="message" data-i18n="messageLabel">Suspicious SMS, chat, or email</label>
+          <textarea id="message" rows="7" maxlength="5000" placeholder="Example: Your account will be blocked today..." data-i18n-placeholder="messagePlaceholder"></textarea>
+          <div class="input-meta"><span id="char-count">0 / 5000</span><span data-i18n="localOnly">Processed locally — not uploaded</span></div>
+          <div class="example-row"><span data-i18n="tryExample">Try a demo:</span><div id="examples" class="example-buttons"></div></div>
+          <div class="button-row"><button id="analyse" class="button primary"><span>⌕</span><span data-i18n="analyse">Check warning signs</span></button><button id="clear-message" class="button secondary" data-i18n="clear">Clear</button></div>
+          <p class="micro-note" data-i18n="noUpload">No login. No account. No message upload. No external AI service.</p>
+        </div>
+        <div class="result-card" id="result-card" aria-live="polite">
+          <div class="result-top"><span class="result-icon" id="result-icon">◎</span><span class="mini-label" data-i18n="resultLabel">MESSAGE CHECK</span></div>
+          <h3 id="result-title" data-i18n="emptyResult">Your safety check appears here</h3>
+          <p id="result-summary" data-i18n="emptySummary">Paste a message to see matched warning patterns and practical next steps.</p>
+          <div class="score-wrap"><div class="score-label"><span data-i18n="riskIndicator">Rule-based risk indicator</span><strong id="score-number">—</strong></div><div class="meter"><div id="score-fill" class="meter-fill"></div></div></div>
+          <div id="matched-heading" class="matched-heading" hidden></div>
+          <div id="matches" class="matches"></div>
+          <div class="result-footer" id="result-footer"><span class="tiny-lock">▣</span><span data-i18n="analysisDisclaimer">This is a warning-sign check, not proof that a message is safe or fraudulent.</span></div>
+          <button id="to-incident" class="button dark" data-i18n="incidentCta">Something already happened? Get next steps →</button>
+        </div>
+      </div>
+      <aside class="principle-strip"><span class="principle-icon">!</span><p><strong data-i18n="goldenRule">Golden rule:</strong> <span data-i18n="goldenText">Never share an OTP, UPI PIN, password, or screen access with an unsolicited caller. Verify through an official channel you find yourself.</span></p></aside>
+    </section>
+
+    <section class="panel" id="panel-incident" aria-labelledby="incident-heading" hidden>
+      <div class="section-heading">
+        <div><p class="section-kicker" data-i18n="step02">STEP 02 / RESPOND</p><h2 id="incident-heading" data-i18n="incidentTitle">What has happened so far?</h2><p data-i18n="incidentDesc">Choose the closest situation to get a practical checklist. You do not need to share personal details.</p></div><span class="step-bubble">02</span>
+      </div>
+      <div class="incident-layout">
+        <div class="choice-card">
+          <p class="field-label" data-i18n="chooseOne">Choose one</p>
+          <button class="incident-choice selected" data-event="not_interacted"><span class="choice-number">A</span><span><strong data-i18n="choiceA">I did not click or reply</strong><small data-i18n="choiceADesc">I received a suspicious message only.</small></span><span class="choice-arrow">→</span></button>
+          <button class="incident-choice" data-event="clicked_link"><span class="choice-number">B</span><span><strong data-i18n="choiceB">I clicked a link</strong><small data-i18n="choiceBDesc">I did not share details or send money.</small></span><span class="choice-arrow">→</span></button>
+          <button class="incident-choice" data-event="shared_secret"><span class="choice-number">C</span><span><strong data-i18n="choiceC">I shared OTP/PIN/password</strong><small data-i18n="choiceCDesc">Or entered bank/card details.</small></span><span class="choice-arrow">→</span></button>
+          <button class="incident-choice" data-event="remote_access"><span class="choice-number">D</span><span><strong data-i18n="choiceD">I installed an app / gave access</strong><small data-i18n="choiceDDesc">Someone may control my screen or device.</small></span><span class="choice-arrow">→</span></button>
+          <button class="incident-choice" data-event="money_sent"><span class="choice-number">E</span><span><strong data-i18n="choiceE">I sent money / see a debit</strong><small data-i18n="choiceEDesc">A payment may be unauthorised.</small></span><span class="choice-arrow">→</span></button>
+        </div>
+        <div class="response-card" id="response-card" aria-live="polite">
+          <div class="response-header"><span class="response-icon">↗</span><div><p class="section-kicker" data-i18n="responsePlan">RESPONSE PLAN</p><h3 id="response-title">You have not interacted</h3></div></div>
+          <p id="response-intro" class="response-intro"></p>
+          <ol id="response-steps" class="response-steps"></ol>
+          <div class="urgent-note"><span>!</span><p id="response-urgency"></p></div>
+          <div class="hotline-row"><div><small data-i18n="financialFraud">Financial cyber fraud in India</small><strong>1930</strong></div><a class="button primary" href="https://cybercrime.gov.in/" target="_blank" rel="noreferrer" data-i18n="officialPortal">Official reporting portal ↗</a></div>
+          <p class="micro-note" id="response-disclaimer"></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-learn" aria-labelledby="learn-heading" hidden>
+      <div class="section-heading">
+        <div><p class="section-kicker" data-i18n="step03">STEP 03 / PRACTISE</p><h2 id="learn-heading" data-i18n="learnTitle">Build your scam reflex</h2><p data-i18n="learnDesc">Short practice scenarios for individuals, families, and community awareness sessions.</p></div><span class="step-bubble">03</span>
+      </div>
+      <div class="learn-grid">
+        <div class="quiz-card">
+          <div class="quiz-top"><span class="quiz-badge" data-i18n="practice">PRACTICE ROUND</span><span id="quiz-progress">1 / 3</span></div>
+          <h3 id="quiz-question">A caller says your SIM will be blocked unless you share an OTP. What should you do?</h3>
+          <div id="quiz-options" class="quiz-options"></div>
+          <div id="quiz-feedback" class="quiz-feedback" hidden aria-live="polite"></div>
+          <button id="quiz-next" class="button primary" hidden data-i18n="nextQuestion">Next question →</button>
+          <div class="quiz-footer"><span data-i18n="quizFoot">No marks are stored or sent anywhere.</span><button id="quiz-restart" class="text-button" data-i18n="restart">Restart practice</button></div>
+        </div>
+        <div class="family-card">
+          <div class="family-icon">♡</div><p class="section-kicker" data-i18n="familyPlan">FAMILY SAFETY PLAN</p><h3 data-i18n="familyTitle">Make a 2-minute pause routine</h3>
+          <div class="family-step"><span>01</span><p data-i18n="family1">Stop before clicking, paying, or sharing a code.</p></div>
+          <div class="family-step"><span>02</span><p data-i18n="family2">Call a trusted family member using a saved number.</p></div>
+          <div class="family-step"><span>03</span><p data-i18n="family3">Check claims in the official app/site—not the link provided.</p></div>
+          <div class="family-step"><span>04</span><p data-i18n="family4">If money was lost, call 1930 quickly and keep evidence.</p></div>
+          <button id="print-card" class="button secondary full">▧ <span data-i18n="printCard">Print family safety card</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="proof-row">
+      <div class="proof-item"><span class="proof-number">01</span><div><strong data-i18n="proof1Title">Explainable</strong><p data-i18n="proof1Text">Shows the exact pattern that triggered a warning.</p></div></div>
+      <div class="proof-item"><span class="proof-number">02</span><div><strong data-i18n="proof2Title">Private</strong><p data-i18n="proof2Text">Message analysis stays in the browser.</p></div></div>
+      <div class="proof-item"><span class="proof-number">03</span><div><strong data-i18n="proof3Title">Action-oriented</strong><p data-i18n="proof3Text">Separate checklists for different incident stages.</p></div></div>
+    </section>
+
+    <footer class="footer">
+      <div><strong>SachetSetu</strong><p data-i18n="footerLine">A prototype for digital safety awareness and harm reduction.</p></div>
+      <div class="footer-links"><a href="https://cybercrime.gov.in/" target="_blank" rel="noreferrer">National Cyber Crime Reporting Portal ↗</a><a href="https://www.mha.gov.in/" target="_blank" rel="noreferrer">Ministry of Home Affairs ↗</a></div>
+      <p class="footer-disclaimer" data-i18n="footerDisclaimer">Educational prototype only. It cannot verify a sender, inspect a live website, contact a bank, or file a complaint on your behalf. If in doubt, use official channels.</p>
+    </footer>
+  </main>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

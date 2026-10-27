@@ -1,0 +1,10 @@
+[
+  {"id":"S1","scenario":"KYC urgency + URL + OTP request","input":"URGENT: Your bank account will be blocked today. Verify KYC now at http://bit.ly/verify-bank and enter your OTP.","expectedSignals":["secret_request","urgency_threat","suspicious_link"],"expectedBucket":"high","synthetic":true},
+  {"id":"S2","scenario":"Digital arrest / secrecy / money demand","input":"This is the police. A case is open against you. Do not tell anyone and do not disconnect the call. Transfer money to settle it.","expectedSignals":["authority_impersonation","secrecy","payment_trick"],"expectedBucket":"high","synthetic":true},
+  {"id":"S3","scenario":"UPI refund / PIN request","input":"Your refund is pending. Approve the UPI collect request and enter your UPI PIN to receive money.","expectedSignals":["secret_request","payment_trick"],"expectedBucket":"high","synthetic":true},
+  {"id":"S4","scenario":"Unexpected reward + fee","input":"Congratulations! You won a free gift. Pay a small processing fee and claim your reward today.","expectedSignals":["prize_bait","payment_trick"],"expectedBucket":"medium_or_high","synthetic":true},
+  {"id":"S5","scenario":"Routine appointment reminder","input":"Reminder: Your appointment is scheduled for 3 PM tomorrow. Please call the clinic number you already have if you need to reschedule.","expectedSignals":[],"expectedBucket":"low","synthetic":true},
+  {"id":"S6","scenario":"Remote access request","input":"Install AnyDesk and enable screen sharing so I can help you update your bank details.","expectedSignals":["remote_access"],"expectedBucket":"medium","synthetic":true},
+  {"id":"S7","scenario":"Hindi fake bank warning","input":"तुरंत: आपका बैंक खाता आज बंद हो जाएगा। KYC के लिए इस लिंक पर जाएँ http://bit.ly/verify-bank और OTP डालें।","expectedSignals":["secret_request","urgency_threat","suspicious_link"],"expectedBucket":"high","synthetic":true},
+  {"id":"S8","scenario":"Punjabi prize lure","input":"ਵਧਾਈਆਂ! ਤੁਸੀਂ ਮੁਫ਼ਤ ਤੋਹਫ਼ਾ ਜਿੱਤਿਆ ਹੈ। ਅੱਜ ਹੀ ਇਨਾਮ ਲੈਣ ਲਈ ਛੋਟੀ ਪ੍ਰੋਸੈਸਿੰਗ ਫੀਸ ਭਰੋ।","expectedSignals":["prize_bait"],"expectedBucket":"medium_or_low","synthetic":true}
+]
